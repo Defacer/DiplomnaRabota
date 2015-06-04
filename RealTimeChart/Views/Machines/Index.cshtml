@@ -1,0 +1,23 @@
+﻿@{
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+@model IEnumerable<RealTimeChart.Models.MachineShortModel>
+@foreach (var machine in Model)
+{
+    <div>
+        <strong>
+            @machine.Name
+        </strong>
+    </div>
+    @Ajax.ActionLink("See monitorng", "Chart", "Home", new { id = machine.Id },
+        new AjaxOptions
+            {
+                InsertionMode = InsertionMode.Replace,
+                UpdateTargetId = "book-content"
+            })
+
+    <br />
+}
+<div id="book-content"></div>
+
+
